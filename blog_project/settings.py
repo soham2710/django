@@ -9,8 +9,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY', default='django-insecure-c929e#&@@($1_x&g-_jg@&k7y!!gko=gpq8#q9!4_ngu!vo*-)')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '*.onrender.com']
-CSRF_TRUSTED_ORIGINS = ['https://*.onrender.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '*.onrender.com', '*.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://*.onrender.com', 'https://*.up.railway.app']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
