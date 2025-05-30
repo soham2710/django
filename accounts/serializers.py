@@ -1,10 +1,9 @@
 from rest_framework import serializers
-from django.contrib.auth import authenticate # imports django authenticate method to validate the login credentials
-from django.contrib.auth.password_validation import validate_password # used to ensure that the password meets the django rules
+from django.contrib.auth import authenticate
+from django.contrib.auth.password_validation import validate_password
 from .models import User, Profile
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
-    # Subclass of modelserializer - to handle the model validation and saving
     password = serializers.CharField(write_only=True, validators=[validate_password])
     password_confirm = serializers.CharField(write_only=True)
 
@@ -33,7 +32,6 @@ class UserLoginSerializer(serializers.Serializer):
         if email and password:
             user = authenticate(request=self.context.get('request'),
                               username=email, password=password)
-            # Authenticate(Django's builtin function to check if the user with the given credentials exists )
             if not user:
                 raise serializers.ValidationError('Invalid credentials.')
             if not user.is_active:

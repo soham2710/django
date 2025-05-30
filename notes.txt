@@ -1,21 +1,3 @@
-python -m venv venv
-
-venv/scripts/activate
-source venv/bin/activate
-
-pip install -r requirements.txt
-brew install -r requirements.txt
-
-django-admin startproject blog_project .
-
-python manage.py startapp contact
-python manage.py createsuperuser
-
-python manage.py makemigrations - for any changes in models.py file
-python manage.py migrate
-
-python manage.py runserver
-
 jinja2 template engine
 {{variable}} - for variables
 
@@ -42,65 +24,6 @@ bearer tokens - OAuth 2.0 - JWT
 
 client side - what happens in browser
 server side - what happens in django
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField' # Default primary key
-big = 64 bit integer 
-auto 
-field
-
-32 bits - -2^31 to +2^31 - 1 - 0 - 2147483647 - autofield - 2billion records
-64 bits - -2^63 to +2^63 - 1 - 0 - 9223372036854775807 - bigautofield - 9 quintillion records
-128 bits - -2^127 to 2^127 - 1- 340 undecillion - UUID 
-256 bits
-512 bits
-1024 bits 
-
-# Module creations
-1. models.py - creates the data in database
-2. serializers.py
-3. views.py
-4. urls.py
-
-
-Models.py file list of all models type fields.
-# string and text field
-CharField(max_length = ) - short text
-TextField() - long text, blog posts, descriptions, list
-slugfield  - url post-friendly
-URLField - validate url
-filepathfield() = file path in the system
-UUIDField() = store unique universal identifiers
-
-# numeric fields
-integerfield- whole numbers
-bigintegerfield - large integers
-positiveinteger field -positive small numbers
-smallintegerfield - small range of integers
-decimalfield - includes decimal, you need to define the number of decimal places
-floatfield - floating point numbers
-
-# Boolean fields 
-booleanfield() - true, false
-
-#date and time fields 
-datefield(yyyy-mm-dd) - 
-durationfield() - store time span
-datetimefield - store date and time starting with the date and then the time - 2025-05-28 18:45:15
-timefield()
-
-#file fields 
-filefield(upload_to = /path) - upload any file 
-imagefield(upload_to = /path) - upload images (requires pillow library) - jpg, png, svg, webp, jpeg
-
-choices=[('draft', 'Draft'), ()]
-
-#relational fields
-foreignkey(Model, ondelete = ) - many to 1 relationship
-Onetoonefield - 1-1 relationship
-manytomanyfield - many - many relationship
-
-jsonfield() - stores json data (pgsql)
-binaryfield() - raw binary data
 
 https://dev.to/eklaassen/django-cheat-sheet-4fjd
 
@@ -132,39 +55,3 @@ user = authenticate(username= "soham456@gmail.com", password = "12345678" )
 {
  "response":"Invalid Credentials"
 }
-
-# views
-admin
-urls
-jinja engine
-deployment
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,10 +1,10 @@
-from django.db import models # contains all django model classes
-from django.contrib.auth import get_user_model # returns active user model
-from django.urls import reverse # dynamic url creation
-from django.utils.text import slugify #creates slug by converting your text to url friendly format
-import uuid # generates unique identifiers
+from django.db import models
+from django.contrib.auth import get_user_model
+from django.urls import reverse
+from django.utils.text import slugify
+import uuid
 
-User = get_user_model() # assigns the current user model to a variable for useing in foreign key relationships
+User = get_user_model()
 
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
