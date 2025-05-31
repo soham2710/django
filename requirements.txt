@@ -8,3 +8,4 @@ python-decouple==3.8
 whitenoise
 gunicorn
 dj-database-url
+setuptools
