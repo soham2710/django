@@ -4,12 +4,14 @@ from pathlib import Path
 from datetime import timedelta
 from decouple import config
 import dj_database_url
+
 BASE_DIR = Path(__file__).resolve().parent.parent # defining our root directory
 
 SECRET_KEY = config('SECRET_KEY', default='django-insecure-c929e#&@@($1_x&g-_jg@&k7y!!gko=gpq8#q9!4_ngu!vo*-)')
 DEBUG = config('DEBUG', default=True, cast=bool)
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.railway.app']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.railway.app', '.up.railway.app']
+CORS_ALLOW_ALL_ORIGINS = config('CORS_ALLOW_ALL_ORIGINS', default=False, cast=bool)
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -75,8 +77,6 @@ DATABASES = {
     )
 }
 
-
-
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -105,7 +105,7 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Media files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
