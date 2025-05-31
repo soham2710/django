@@ -9,7 +9,14 @@ class ProfileInline(admin.StackedInline):
     verbose_name_plural = 'Profile'
     fields = ('bio', 'location', 'birth_date', 'avatar', 'website', 'twitter', 'github', 'linkedin', 'phone', 'is_public')
 
+# class ProfileInline(admin.TabularInline):
+#     model = Profile
+#     can_delete = False
+#     verbose_name_plural = 'Profile'
+#     fields = ('bio', 'location', 'birth_date', 'avatar', 'website', 'twitter', 'github', 'linkedin', 'phone', 'is_public')
+
 @admin.register(User)
+#admin.site.register(User,UserAdmin)
 class UserAdmin(BaseUserAdmin):
     inlines = (ProfileInline,)
     list_display = ('email', 'username', 'first_name', 'last_name', 'is_verified', 'is_staff', 'is_active', 'created_at')
@@ -19,13 +26,13 @@ class UserAdmin(BaseUserAdmin):
     readonly_fields = ('created_at', 'updated_at')
 
     fieldsets = (
-        (None, {'fields': ('username', 'password')}),
-        ('Personal info', {'fields': ('first_name', 'last_name', 'email')}),
-        ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser', 'is_verified', 'groups', 'user_permissions')}),
+        ('User Info', {'fields': ('username', 'password','first_name', 'last_name', 'email')}),
+        
+        ('Permissions (Access Control)', {'fields': ('is_active', 'is_staff', 'is_superuser', 'is_verified', 'groups', 'user_permissions')}),
         ('Important dates', {'fields': ('last_login', 'date_joined', 'created_at', 'updated_at')}),
     )
 
-    add_fieldsets = (
+    add_fieldsets = ( # Creates new user in the admin panel
         (None, {
             'classes': ('wide',),
             'fields': ('username', 'email', 'first_name', 'last_name', 'password1', 'password2'),

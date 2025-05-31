@@ -1,12 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
-from django.contrib import messages
-from django.views.decorators.csrf import csrf_exempt
+from django.contrib import messages # flash messages 
+from django.views.decorators.csrf import csrf_exempt # disable csrf for testing purposes
 from rest_framework import status, generics, permissions
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
-from rest_framework.views import APIView
+from rest_framework.views import APIView # Base class for api views
 from rest_framework_simplejwt.tokens import RefreshToken
 from .models import User, Profile
 from .serializers import (
@@ -14,17 +14,17 @@ from .serializers import (
     ProfileSerializer, UserUpdateSerializer, ChangePasswordSerializer
 )
 
-# API Views
-class RegisterAPIView(generics.CreateAPIView):
+# API Views (Class Based views) - used for frontend apps, and mobile apps, javascript etc... 
+class RegisterAPIView(generics.CreateAPIView): # extending drf's createAPIview and handles requests for creating objects
     queryset = User.objects.all()
     serializer_class = UserRegistrationSerializer
     permission_classes = [permissions.AllowAny]
 
-    def create(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        user = serializer.save()
-        refresh = RefreshToken.for_user(user)
+    def create(self, request, *args, **kwargs): 
+        serializer = self.get_serializer(data=request.data) # creates json data from input entries
+        serializer.is_valid(raise_exception=True) # validates the data if data is not correct then it shows 400 error
+        user = serializer.save() # saves the data to the database
+        refresh = RefreshToken.for_user(user) # creates a refresh token for the user
         return Response({
             'user': UserSerializer(user, context={'request': request}).data,
             'refresh': str(refresh),
@@ -87,7 +87,7 @@ class ChangePasswordAPIView(APIView):
         
         return Response({"message": "Password changed successfully"}, status=status.HTTP_200_OK)
 
-# Template Views
+# Template Views (Function based View) - (for browsers to render templates)
 def signup_view(request):
     if request.method == 'POST':
         username = request.POST.get('username')

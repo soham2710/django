@@ -48,7 +48,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
         fields = '__all__'
-        read_only_fields = ('user', 'created_at', 'updated_at')
+        read_only_fields = ('user', 'created_at', 'updated_at') # This cannot be modified by the api
 
     def get_avatar_url(self, obj):
         if obj.avatar:

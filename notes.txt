@@ -55,3 +55,73 @@ user = authenticate(username= "soham456@gmail.com", password = "12345678" )
 {
  "response":"Invalid Credentials"
 }
+
+
+URI vs URL?
+URI - Unifirm resource Identifier - https://example.com/page - urn:isbn:123 - api (name)
+URL - Uniform resource locator - location + access (where + how)
+
+
+Views.py - handles the http request and return required response
+args - variable number of positional arguments (arguments are taken as tuple)
+kwargs, variable number of keyword arguments (arguments are taken as dictionaries)
+
+def greet(name, age):
+    print('hello {name}, you are {age} old)
+
+def flex_greet(*args, **kwargs)
+    print("Args:", args)
+    print("KWArgs:", kwargs)
+
+
+flex_greet("john", 25, city = "NYC", job= "developer")
+
+Request:
+{
+    "username": "soham275",
+    "email": "soham57@gmail.com", 
+    "first_name": "soham",
+    "last_name": "sharma",
+    "password": "rdcv4c75",
+    "password_confirm": "rdcv4c75"
+}
+
+Response:
+{
+    "user": {
+        "id": 7,
+        "username": "soham275",
+        "email": "soham57@gmail.com",
+        "first_name": "soham",
+        "last_name": "sharma",
+        "full_name": "soham sharma",
+        "is_verified": false,
+        "created_at": "2025-05-30T14:16:37.509833Z",
+        "profile": {
+            "id": 4,
+            "user": "soham57@gmail.com",
+            "avatar_url": "http://127.0.0.1:8000/media/avatars/default.jpg",
+            "bio": "",
+            "location": "",
+            "birth_date": null,
+            "avatar": "http://127.0.0.1:8000/media/avatars/default.jpg",
+            "website": "",
+            "twitter": "",
+            "github": "",
+            "linkedin": "",
+            "phone": "",
+            "is_public": true,
+            "created_at": "2025-05-30T14:16:37.513993Z",
+            "updated_at": "2025-05-30T14:16:37.555933Z"
+        }
+    },
+    "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc0ODcwMDk5NywiaWF0IjoxNzQ4NjE0NTk3LCJqdGkiOiI5MGI1NDM5ZTI0YTQ0N2RlOTBhZmMzMzllOGM2ODAwYSIsInVzZXJfaWQiOjd9.T7nN6bEo0djpuf3i8CW7WCrmLqTSLFzmlDiwd2y96hU",
+    "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4NjE4MTk3LCJpYXQiOjE3NDg2MTQ1OTcsImp0aSI6IjRiYzQxMjY0ZTYwMzQyOGZhMThlNzcxZGQ3Zjg0YjBmIiwidXNlcl9pZCI6N30.gXIM5eznrRNWlF7Ncv4x8Ne1JUigKiWvF59boudOtDw"
+}
+
+
+
+
+
+
+
